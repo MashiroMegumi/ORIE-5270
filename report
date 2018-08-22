@@ -1,0 +1,5 @@
+Today we covered topics including launching an instance on AWS, Linux, the version control system Git, Shell, and a little bit of python.
+The instance allows us to compute efficiently by connecting remotely to other computers on the cloud. Besides computating, we can also store data and conduct other data mining techniques on the cloud. 
+Linux is a powerful operating system that allows us to conduct high-end file and data processing, along with Shell script, we can run the data analysis efficiently.
+The Git is a version control system that enables us to keep track of different version (different changes at different times) of the files and make modifications to that. It is extremely useful when we would like to modify/update a project multiple times or collaborate with other people on the same project.
+
