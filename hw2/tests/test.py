@@ -1,16 +1,6 @@
 import unittest
 from tree.tree import Node, Btree
-
-
-class Test(unittest.TestCase):
-    def setup(self):
-        a = Node(1)
-        import unittest
-from tree.tree import Node, Btree
-
-
-class Test(unittest.TestCase):
-    
+class Test(unittest.TestCase):    
     def setup(self):
         # case 1
         a_1 = Node(1)
