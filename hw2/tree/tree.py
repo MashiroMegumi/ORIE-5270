@@ -50,7 +50,7 @@ class Btree:
                 matrix[h][index] = node.value
                 self.ptree(node.l, l, index, h+1, matrix)
                 self.ptree(node.r, index, r, h+1, matrix)
- 
+
     def pring(self):
         self.ptree(self.root, 0, 2**self.height-1, 0, self.matrix)  # the default settings
         for i in self.matrix:
