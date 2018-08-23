@@ -1,6 +1,1 @@
-{
-  "tests/test_tree.py::Test::test_1": true, 
-  "tests/test_tree.py::Test::test_2": true, 
-  "tests/test_tree.py::Test::test_3": true, 
-  "tests/test_tree.py::Test::test_4": true
-}
+{}

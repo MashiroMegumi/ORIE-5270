@@ -14,21 +14,21 @@ class Node:
     def addrc(self, r):  # the method to add a right child
         self.right = r
 
-    def getheight(node):  # the static method to find the "height" of the tree consisting of nodes.
-        if node is None:
-            return 0
+    def getheight(self, node):
+        if node is not None:
+            return 1+max(self.getheight(node.left), self.getheight(node.right))
         else:
-            return 1+max(Node.getheight(node.left), Node.getheight(node.right))
+            return 0
 
 
 # the binary tree class
-class Btree:
+class Btree(Node):
     def __init__(self, root):
         """
         root is a node with reference to its children
         """
         self.root = root
-        self.height = Node.getheight(root)  # get the tree height
+        self.height = self.getheight(root)  # get the tree height
 
         # initialize the matrix holding the results
         self.matrix = [["|" for i in range(2**self.height-1)] for j in range(self.height)]

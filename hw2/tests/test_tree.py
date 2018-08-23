@@ -4,7 +4,7 @@ from tree.tree import Node, Btree
 
 class Test(unittest.TestCase):
 
-    def setup(self):
+    def setUp(self):
         # case 1
         self.answer_1 = [[1]]
 
