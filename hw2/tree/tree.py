@@ -5,20 +5,20 @@ class Node:
         param n: the value of the node
         """
         self.value = n  # set the node value, without specific left child and right child
-        self.l = None
-        self.r = None
+        self.left = None
+        self.right = None
 
     def addlc(self, l):  # the method to add a left child
-        self.l = l
+        self.left = l
 
     def addrc(self, r):  # the method to add a right child
-        self.r = r
+        self.right = r
 
     def getheight(node):  # the static method to find the "height" of the tree consisting of nodes.
         if node is None:
             return 0
         else:
-            return 1+max(Node.getheight(node.l), Node.getheight(node.r))
+            return 1+max(Node.getheight(node.left), Node.getheight(node.right))
 
 
 # the binary tree class
@@ -48,8 +48,8 @@ class Btree:
             else:
                 index = (l+r)//2
                 matrix[h][index] = node.value
-                self.ptree(node.l, l, index, h+1, matrix)
-                self.ptree(node.r, index, r, h+1, matrix)
+                self.ptree(node.left, l, index, h+1, matrix)
+                self.ptree(node.right, index, r, h+1, matrix)
 
     def pring(self):
         self.ptree(self.root, 0, 2**self.height-1, 0, self.matrix)  # the default settings
