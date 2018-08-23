@@ -31,8 +31,8 @@ class Btree:
         self.height = Node.getheight(root)  # get the tree height
 
         # initialize the matrix holding the results
-        self.matrix = [["|" for i in range(2**self.height-1)] for j in range(self.height)] 
- 
+        self.matrix = [["|" for i in range(2**self.height-1)] for j in range(self.height)]
+
     def ptree(self, node, l, r, h, matrix):
         '''
         node: a node with reference to its children
@@ -50,7 +50,7 @@ class Btree:
                 matrix[h][index] = node.value
                 self.ptree(node.l, l, index, h+1, matrix)
                 self.ptree(node.r, index, r, h+1, matrix)
-      
+ 
     def pring(self):
         self.ptree(self.root, 0, 2**self.height-1, 0, self.matrix)  # the default settings
         for i in self.matrix:
