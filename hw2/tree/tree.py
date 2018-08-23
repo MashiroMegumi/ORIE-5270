@@ -7,13 +7,13 @@ class Node:
         self.value = n  # set the node value, without specific left child and right child
         self.l = None
         self.r = None
-        
+
     def addlc(self, l):  # the method to add a left child
         self.l = l
-        
+ 
     def addrc(self, r):  # the method to add a right child
         self.r = r
-        
+
     def getheight(node):  # the static method to find the "height" of the tree consisting of nodes.
         if node is None:
             return 0
