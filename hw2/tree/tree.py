@@ -10,7 +10,7 @@ class Node:
 
     def addlc(self, l):  # the method to add a left child
         self.l = l
- 
+
     def addrc(self, r):  # the method to add a right child
         self.r = r
 
@@ -20,6 +20,7 @@ class Node:
         else:
             return 1+max(Node.getheight(node.l), Node.getheight(node.r))
 
+
 # the binary tree class
 class Btree:
     def __init__(self, root):
@@ -27,11 +28,11 @@ class Btree:
         root is a node with reference to its children
         """
         self.root = root
-        self.height = Node.getheight(root)  #get the tree height
-        
+        self.height = Node.getheight(root)  # get the tree height
+
         # initialize the matrix holding the results
         self.matrix = [["|" for i in range(2**self.height-1)] for j in range(self.height)] 
-        
+ 
     def ptree(self, node, l, r, h, matrix):
         '''
         node: a node with reference to its children
