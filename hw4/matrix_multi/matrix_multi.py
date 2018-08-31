@@ -1,41 +1,28 @@
 from pyspark import SparkConf, SparkContext
-import sys
 
 def f(x):
-    '''
-    the function to generate iter object
-    '''
-    for i in x:
-        yield i[1][1], (i[0], i[1][0])
-
-def write_out(sth):
+    for a in x:
+        yield a[1][1], (a[0], a[1][0])
+        
+def matrix_multiplication(A_txt, v_txt):
     """
-    the function to output a result text file with input sth
+    Calculate A*v
+    :param A_txt: A txt file including matrix, with index
+    :param v_txt: A txt file including vector, without index
+    :return: An RDD object of A*v
     """
-    txt = open("result.txt","w")
-    for i in sth:
-        txt.write(str(i)+"\n")
-    txt.close()
-
-def matrix_multi(A.txt,v.txt):
-    '''
-    params:
-    A.txt: the matrix file (index included)
-    v.txt: the vector file (index included)
-    '''
-    A = sc.textFile('A.txt').map(lambda l: [float(x) for x in l.split(",")])
-    v = sc.textFile('v.txt').map(lambda l: l.split(","))
-    A = A.map(lambda l: [(l[0], (l[i], i)) for i in range(1, len(l))])
+    A = sc.textFile(A_txt).map(lambda l: [float(x) for x in l.split(",")])
+    v = sc.textFile(v_txt).map(lambda l: [float(x) for x in l.split(",")])
+ 
+    A = A.map(lambda l: [(l[0], (l[i], i-1)) for i in range(1, len(l))])
     A = A.flatMap(lambda l: f(l))
-
-    v = v.map(lambda l: [(l[0], (l[i], i)) for i in range(1, len(l))])
-    v = v.flatMap(lambda l: [(i, l[i]) for i in range(1, len(l))])
     
-    joint = A.join(v)
-    product = joint.map(lambda l: (l[1][0][0], l[1][0][1] * l[1][1]))
-    A_v = product.reduceByKey(lambda l_1,l_2: l_1 + l_2)
-    write_out(A_v.collect())
-    sc.stop()
+    v = v.map(lambda l: [(l[0], (l[i], i)) for i in range(len(l))])
+    v = v.flatMap(lambda l: [(i, l[i]) for i in range(len(l))])
+    
+    Av = A.join(v)
+    Av = Av.map(lambda l: (l[1][0][0], l[1][0][1] * l[1][1][1][0]))
 
-if __name__ == "__main__":
-    matrix_multi(sys.argv[1],sys.argv[2])
+    Av = Av.reduceByKey(lambda x, y: x + y)
+    print(Av.collect())
+    return(Av)
