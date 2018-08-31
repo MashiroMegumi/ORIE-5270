@@ -22,9 +22,9 @@ def pyspark_kmeans(data_file,seed_file, itera = 100):
     write_out(cent)
     sc.stop()
 
-def write_out(txt):
+def write_out(sth):
     txt = open("result.txt","w")
-    for i in cent:
+    for i in sth:
         txt.write(str(i)+"\n")
     txt.close()
     
